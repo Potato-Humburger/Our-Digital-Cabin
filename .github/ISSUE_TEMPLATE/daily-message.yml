@@ -1,0 +1,51 @@
+name: Daily Message
+description: Share daily thoughts, letters, or date ideas in our digital cabin.
+title: "[Daily Message] "
+labels:
+  - heart-to-heart
+body:
+  - type: dropdown
+    id: message_type
+    attributes:
+      label: Message type
+      options:
+        - Daily Thoughts
+        - Virtual Letter
+        - Future Date Idea
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date
+      description: "Format: YYYY-MM-DD"
+      placeholder: "2026-08-20"
+    validations:
+      required: true
+
+  - type: textarea
+    id: message
+    attributes:
+      label: Message
+      description: Write your note here 💌
+      placeholder: Today I wanted to tell you...
+    validations:
+      required: true
+
+  - type: input
+    id: mood
+    attributes:
+      label: Current mood badge text
+      description: Optional text for README status updates.
+      placeholder: "😊 hopeful / 💛 calm / 🚀 focused"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: tags_hint
+    attributes:
+      label: Optional label hints
+      options:
+        - label: memories
+        - label: bucket-list
