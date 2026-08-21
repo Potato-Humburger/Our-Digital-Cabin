@@ -1,0 +1,65 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "The Notebook",
+      "type": "爱情戏剧",
+      "year": 2004,
+      "rating": 5,
+      "status": "想看",
+      "added_date": "2026-08-22",
+      "watched_date": null,
+      "notes": "经典爱情故事"
+    },
+    {
+      "id": 2,
+      "title": "About Time",
+      "type": "爱情喜剧",
+      "year": 2013,
+      "rating": 5,
+      "status": "想看",
+      "added_date": "2026-08-22",
+      "watched_date": null,
+      "notes": "温暖而深情的故事"
+    },
+    {
+      "id": 3,
+      "title": "La La Land",
+      "type": "音乐戏剧",
+      "year": 2016,
+      "rating": 5,
+      "status": "想看",
+      "added_date": "2026-08-22",
+      "watched_date": null,
+      "notes": "音乐和爱情的完美融合"
+    },
+    {
+      "id": 4,
+      "title": "The Fault in Our Stars",
+      "type": "爱情戏剧",
+      "year": 2014,
+      "rating": 5,
+      "status": "想看",
+      "added_date": "2026-08-22",
+      "watched_date": null,
+      "notes": "感人的爱情故事"
+    },
+    {
+      "id": 5,
+      "title": "Crazy, Stupid, Love",
+      "type": "爱情喜剧",
+      "year": 2011,
+      "rating": 5,
+      "status": "想看",
+      "added_date": "2026-08-22",
+      "watched_date": null,
+      "notes": "有趣和甜蜜的爱情故事"
+    }
+  ],
+  "stats": {
+    "total_movies": 5,
+    "watched_count": 0,
+    "want_to_watch_count": 5,
+    "watching_count": 0
+  }
+}

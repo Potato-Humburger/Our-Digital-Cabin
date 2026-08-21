@@ -1,0 +1,51 @@
+{
+  "milestones": [
+    {
+      "id": 1,
+      "date": "2026-05-14",
+      "category": "beginning",
+      "title": "我们相遇",
+      "emoji": "🌹",
+      "description": "我们的故事开始的地方",
+      "location": "地点名称",
+      "notes": "添加有关这个时刻的详细信息"
+    },
+    {
+      "id": 2,
+      "date": "2026-06-14",
+      "category": "celebration",
+      "title": "一个月纪念日",
+      "emoji": "💕",
+      "description": "在一起一个月的庆祝",
+      "notes": "我们如何庆祝的"
+    },
+    {
+      "id": 3,
+      "date": "2026-07-14",
+      "category": "milestone",
+      "title": "两个月纪念日",
+      "emoji": "💝",
+      "description": "我们旅程的第二个重要时刻",
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "date": "2026-08-14",
+      "category": "travel",
+      "title": "我们的第一次旅行",
+      "emoji": "✈️",
+      "description": "我们去的第一个地方",
+      "location": "目的地",
+      "notes": "这次旅行很特别，因为..."
+    },
+    {
+      "id": 5,
+      "date": "2026-09-14",
+      "category": "special",
+      "title": "特殊时刻",
+      "emoji": "🎉",
+      "description": "描述这个特殊时刻",
+      "notes": ""
+    }
+  ]
+}

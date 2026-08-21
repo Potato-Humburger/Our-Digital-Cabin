@@ -1,0 +1,36 @@
+{
+  "relationship": {
+    "start_date": "YYYY-MM-DD",
+    "days_together": 0,
+    "current_phase": "甜蜜新恋爱",
+    "milestones": [
+      {
+        "date": "YYYY-MM-DD",
+        "event": "我们相遇",
+        "description": "😍 开始的地方"
+      },
+      {
+        "date": "YYYY-MM-DD",
+        "event": "第一次约会",
+        "description": "💝 我们共同的故事开始了"
+      },
+      {
+        "date": "YYYY-MM-DD",
+        "event": "成为情侣",
+        "description": "💕 正式在一起"
+      }
+    ]
+  },
+  "communication": {
+    "timezone": "Asia/Shanghai",
+    "preferred_languages": ["中文", "English"],
+    "frequency": "daily"
+  },
+  "future": {
+    "dreams": [
+      "旅游清单中的目的地",
+      "一起做的事",
+      "未来计划"
+    ]
+  }
+}

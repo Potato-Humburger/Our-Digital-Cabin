@@ -1,0 +1,27 @@
+{
+  "theme": {
+    "primary_color": "#FF69B4",
+    "secondary_color": "#FF1493",
+    "accent_color": "#32CD32",
+    "primary_emoji": "💕",
+    "secondary_emoji": "💝"
+  },
+  "automation": {
+    "daily_greeting_enabled": true,
+    "daily_greeting_time": "07:00",
+    "anniversary_reminder_enabled": true,
+    "quote_generator_enabled": true,
+    "quote_time": "09:00"
+  },
+  "privacy": {
+    "repository_visibility": "private",
+    "allow_discussions": true,
+    "allow_issues": true,
+    "require_approval_for_comments": false
+  },
+  "notifications": {
+    "email_on_anniversary": true,
+    "email_on_new_memory": false,
+    "digest_frequency": "weekly"
+  }
+}

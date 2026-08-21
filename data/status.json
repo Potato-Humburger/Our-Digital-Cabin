@@ -1,0 +1,10 @@
+{
+  "current_mood": "😊",
+  "mood_description": "当前心情",
+  "location": "🏠",
+  "location_description": "当前位置",
+  "last_updated": "YYYY-MM-DD HH:MM:SS",
+  "thinking_of_you": true,
+  "today_highlight": "👉 编辑这里分享今天的亮点！",
+  "quote_of_day": "💭 用一句特殊的引言/内心话来开始你的一天..."
+}
