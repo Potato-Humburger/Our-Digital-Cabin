@@ -7,11 +7,9 @@
     "secondary_emoji": "💝"
   },
   "automation": {
-    "daily_greeting_enabled": true,
-    "daily_greeting_time": "07:00",
-    "anniversary_reminder_enabled": true,
-    "quote_generator_enabled": true,
-    "quote_time": "09:00"
+    "daily_status_sync_enabled": true,
+    "secret_notes_sync_enabled": true,
+    "pages_deploy_enabled": true
   },
   "privacy": {
     "repository_visibility": "private",
@@ -20,7 +18,6 @@
     "require_approval_for_comments": false
   },
   "notifications": {
-    "email_on_anniversary": true,
     "email_on_new_memory": false,
     "digest_frequency": "weekly"
   }

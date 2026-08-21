@@ -67,13 +67,9 @@
           <span class="count-badge">SYNC TO JSON</span>
         </div>
         <form id="daily-status-form" class="status-form">
-          <label>当前心情<input id="status-mood" name="mood" maxlength="30" required /></label>
-          <label>心情描述<input id="status-mood-description" name="mood_description" maxlength="120" required /></label>
-          <label>当前位置<input id="status-location" name="location" maxlength="80" required /></label>
-          <label>今日亮点<textarea id="status-highlight" name="today_highlight" maxlength="500" rows="3" required></textarea></label>
-          <label>今日想说的话<textarea id="status-quote" name="quote_of_day" maxlength="500" rows="3" required></textarea></label>
+          <label>今日亮点<textarea id="status-highlight" name="today_highlight" maxlength="500" rows="5" required></textarea></label>
           <p class="dialog-hint">提交后会打开 GitHub 确认页面，发布后自动写入状态 JSON。</p>
-          <button class="button button-dark" type="submit">保存今日状态 <span>→</span></button>
+          <button class="button button-dark dialog-submit" type="submit">保存今日状态 <span>↗</span></button>
           <output class="note-sent" id="status-sent" aria-live="polite"></output>
         </form>
       </section>

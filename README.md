@@ -1,218 +1,138 @@
-<div align="center">
+# Our Digital Cabin
 
-# 土豆公主和烤冷面
+一个基于 GitHub 的个人共享网页项目。项目使用静态网页展示关系信息、重要日期、旅行清单、观影清单和悄悄话记录，并使用 GitHub Issues 与 GitHub Actions 完成内容提交和数据同步。
 
-> 欢迎回家～
+## 功能概览
 
-[![最后更新](https://img.shields.io/badge/最后更新-2026--08--22-ff69b4?style=flat-square)](https://github.com/Potato-Humburger/Our-Digital-Cabin)
-[![相伴时光](https://img.shields.io/badge/相伴-自%202025--07--18-ff1493?style=flat-square)](.)
-[![状态](https://img.shields.io/badge/状态-💚%20幸福%20%26%20健康-32cd32?style=flat-square)](.)
-[![爱心指数](https://img.shields.io/badge/爱心-∞-ff69b4?style=flat-square)](.)
+- GitHub Pages 静态网页
+- 相伴天数自动计算
+- 重要日期和生日时间线
+- 旅行清单与本地旅行图片
+- 观影清单
+- 悄悄话提交和记录展示
+- 网页端“今日亮点”编辑
+- GitHub Actions 自动同步 JSON 数据
 
----
+## 快速开始
 
-</div>
+### 1. 自定义你的仓库
+- [ ] 在 `data/metrics.json` 中添加你们的实际开始日期
+- [ ] 用你的时区和初始心情更新 `data/status.json`
+- [ ] 用你最喜欢的颜色/表情个性化 `data/config.json`
 
+### 2. 设置特殊日期
+- [ ] 编辑 `dates/anniversaries.json` 添加生日和重要日期
+- [ ] 用对你们重要的日期更新 `dates/calendar.md`
 
-## 📊 信息面板
+### 3. 启用自动化（可选）
+- [ ] 查看 `.github/workflows/` 中的可用自动化
+- [ ] 在**设置 → Actions → General** 中启用工作流
 
-### 快速数据
+### 4. 创建你的第一条回忆
+- [ ] 前往 [Issues](https://github.com/Potato-Humburger/Our-Digital-Cabin/issues)
+- [ ] 选择"📸 回忆"模板
 
-<!-- cabin-stats:start -->
-| 🎯 | 你的信息 |
+### 5. 添加娱乐内容
+- [ ] 编辑 `projects/watchlist/movies.json`
+- [ ] 添加你们想一起看的电影或节目
+
+### 本地预览
+
+在仓库根目录运行：
+
+```bash
+python3 -m http.server 4173
+```
+
+然后访问：
+
+```text
+http://127.0.0.1:4173/index.html
+```
+
+### GitHub Pages 部署
+
+1. 打开仓库的 `Settings > Pages`。
+2. 在 `Build and deployment > Source` 中选择 `GitHub Actions`。
+3. 运行 `.github/workflows/pages.yml`，或向 `main` 分支推送一次提交。
+4. 部署完成后，通过仓库的 Pages 地址访问网页。
+
+## 网页使用
+
+### 发送悄悄话
+
+1. 在网页的“发送一段悄悄话”区域填写昵称和内容。
+2. 点击“打开发布页面”。
+3. 在 GitHub Issue 页面确认内容并点击发布。
+4. `sync-secret-notes.yml` 会将已发布的悄悄话同步到 `data/secret-notes.json`。
+5. 网页重新加载后，悄悄话会显示在“悄悄话记录”区域。
+
+### 更新今日亮点
+
+1. 在网页的“更新今日状态”区域填写今日亮点。
+2. 点击“保存今日状态”。
+3. 在 GitHub Issue 页面确认并发布。
+4. `sync-daily-status.yml` 会将内容写入 `data/status.json`。
+
+网页编辑台只更新今日亮点；`status.json` 中的其他字段需要直接编辑文件维护。
+
+## 数据文件
+
+| 文件 | 用途 |
 |---|---|
-| **相伴天数** | 400 天 |
-| **当前位置** | ajx 在上海，xzh 在香港 |
-| **当前心情** | 幸福：今天是我们在一起的第四百天！ |
-| **下一个里程碑** | 🎉 2026-09-01：相伴 411 天 |
-| **距离** | 📏 暂时异地 |
-<!-- cabin-stats:end -->
+| `data/metrics.json` | 关系开始日期、相伴天数和里程碑 |
+| `data/status.json` | 当前状态、位置和今日亮点 |
+| `data/config.json` | 项目开关和隐私配置 |
+| `data/secret-notes.json` | 已同步的悄悄话记录 |
+| `dates/anniversaries.json` | 生日和纪念日数据 |
+| `dates/calendar.md` | 可读的日期日历 |
+| `dates/future-plans.md` | 旅行和未来计划 |
+| `projects/watchlist/movies.json` | 观影清单 |
 
-### 最近活动
+相伴天数由网页根据 `data/metrics.json` 中的 `start_date` 实时计算，不需要手动维护。
 
-- 📝 [最新情书](https://github.com/Potato-Humburger/Our-Digital-Cabin/issues)
-- 🎞️ [回忆库](./memories/) 
-- 📅 [即将到来的日期](./dates/calendar.md)
-- 🎬 [观影清单](./projects/watchlist/)
+## 图片资源
 
----
+- `images/our-photo.jpg`：首页合影
+- `images/travel.jpg`：旅行清单区域图片
 
-## 📁 仓库结构
+新增图片可放入 `images/`，并在网页或 CSS 中使用相对路径引用。
 
-```
+## GitHub Actions
+
+当前使用的工作流如下：
+
+| 工作流 | 用途 |
+|---|---|
+| `pages.yml` | 部署 GitHub Pages 网页 |
+| `sync-daily-status.yml` | 将网页提交的今日亮点同步到 `data/status.json` |
+| `sync-secret-notes.yml` | 将悄悄话 Issue 同步到 `data/secret-notes.json` |
+
+## 项目结构
+
+```text
 Our-Digital-Cabin/
-├── 📄 README.md                    # 本文件
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── daily-thoughts.md       # 每日记录和思考
-│   │   ├── love-letter.md          # 虚拟情书
-│   │   ├── date-idea.md            # 未来约会计划
-│   │   └── memory.md               # 珍贵时刻
-│   └── workflows/
-│       ├── daily-greeting.yml      # 自动每日问候（可选）
-│       ├── anniversary-reminder.yml # 特殊日期提醒
-│       └── quote-generator.yml     # 每日随机爱情语录
-│
-├── 💾 data/
-│   ├── metrics.json                # 关系统计（手动更新）
-│   ├── status.json                 # 当前心情和位置
-│   └── config.json                 # 自定义设置
-│
-├── 📸 memories/
-│   ├── 2026/
-│   │   ├── 01-january/
-│   │   ├── 02-february/
-│   │   └── ...
-│   ├── milestones.json             # 整理的里程碑
-│   └── timeline.md                 # 共享时间轴
-│
-├── 📅 dates/
-│   ├── calendar.md                 # 重要日期
-│   ├── anniversaries.json          # 纪念日和生日
-│   └── future-plans.md             # 共同梦想和目标
-│
-├── 🎮 projects/
-│   ├── watchlist/
-│   │   ├── movies.json
-│   │   ├── shows.json
-│   │   └── README.md
-│   ├── budget-tracker/             # 共享支出
-│   ├── bucket-list/                # 想去的地方和要做的事
-│   └── README.md
-│
-├── 💌 discussions/
-│   └── README.md                   # 置顶讨论分类
-│
-├── 📚 docs/
-│   ├── commit-convention.md        # 我们的 Gitmoji 指南
-│   ├── contribution-guide.md       # 如何使用此仓库
-│   └── faq.md                      # 常见问题
-│
-└── 🔐 .gitignore                   # 保护隐私
+├── index.html
+├── styles.css
+├── app.js
+├── data/
+├── dates/
+├── images/
+├── memories/
+├── projects/watchlist/
+├── .github/ISSUE_TEMPLATE/
+├── .github/workflows/
+└── docs/
 ```
 
----
+## 隐私说明
 
-## 💬 如何使用这个空间
+仓库一旦公开，仓库文件、图片、Issues、悄悄话记录和提交历史都可能被任何人访问。公开仓库前，请确认其中不包含不希望公开的个人信息。
 
-### 📝 分享你的想法 - 每日记录
+不要在仓库、Issue 或网页代码中保存密码、访问令牌、私钥或其他敏感凭据。
 
-使用 **[Issues](https://github.com/Potato-Humburger/Our-Digital-Cabin/issues)** 来分享：
-- **每日想法** 💭 (今天在想什么)
-- **情书** 💌 (发自内心的信息)
-- **约会想法** 🎯 (我们一起应该做的事)
-- **回忆** 📸 (特殊时刻的照片和故事)
+## 文档
 
-**如何创建记录：**
-1. 前往 [Issues → 新建 Issue](https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new)
-2. 选择模板（每日想法、情书等）
-3. 填写你的想法
-4. 添加标签：`💚-心对心`、`📸-回忆`、`🎯-梦想清单` 等
-5. 提交！
-
-### 🎞️ 回忆库 - 我们的故事
-
-所有回忆都按年月组织在 [`memories/`](./memories/) 文件夹中。添加照片、写故事，记录我们的共同旅程。
-
-### 📅 重要日期
-
-查看 [`dates/calendar.md`](./dates/calendar.md)：
-- 🎂 生日和纪念日
-- 🎉 我们庆祝过的特殊日子
-- 💭 我们计划的未来日期
-
-### 🎮 小项目
-
-在 [`projects/`](./projects/) 文件夹中，我们可以一起构建：
-- 🎬 **观影清单** - 追踪我们想看的电影
-- 💰 **预算追踪器** - 管理共享支出
-- ✈️ **梦想清单** - 想去的地方和经历
-
-### 🗣️ 讨论
-
-使用 [GitHub 讨论](https://github.com/Potato-Humburger/Our-Digital-Cabin/discussions) 进行：
-- 小组对话（比 Issues 更随意）
-- 分享照片和更新
-- 电影评论和建议
-- 每周关系检查
-
----
-
-## 🤖 自动化和工作流
-
-本仓库包含 GitHub Actions 的特殊功能：
-
-### ✨ 每日问候（可选）
-每天早上 7 点自动创建"早上好"提醒。
-
-### 🎂 纪念日提醒
-当特殊日期即将到来时获得通知。
-
-### 💘 每日语录生成器
-每天发布一条随机爱情语录或个人提醒。
-
-### 🔐 虚拟时间胶囊
-锁定一条记录，仅在指定的未来日期可见。
-
-*要启用工作流，请检查 `.github/workflows/` 并根据需要配置。*
-
----
-
-## 💻 提交信息规范
-
-我们使用 **Gitmoji** 让历史记录更有趣和有意义：
-
-| 表情 | 用途 | 示例 |
-|------|-------|---------|
-| 💝 | 添加回忆/里程碑 | `💝 添加 2026-08-20 周年纪念照` |
-| 📸 | 照片上传 | `📸 上传海滩旅行照` |
-| 📝 | 文档更新 | `📝 更新约会想法` |
-| 🐛 | 错误修复 | `🐛 修复回忆时间线排序` |
-| ✨ | 新功能 | `✨ 添加观影清单追踪器` |
-| 📅 | 日历/日期 | `📅 添加秋季旅行计划日期` |
-| 💬 | 消息/更新 | `💬 更新当前心情` |
-
-详见 [`docs/commit-convention.md`](./docs/commit-convention.md) 获得完整指南。
-
----
-
-## 🛡️ 隐私和设置
-
-此仓库默认为**私密**。只有你们两个可以看到它。要自定义：
-
-1. 编辑 `data/config.json` 更改主题和设置
-2. 更新 `data/metrics.json` 添加你们的关系时间线
-3. 配置 `.github/workflows/` 按你们的偏好
-4. 更新 `data/status.json` 保持彼此了解
-
----
-
-## 📚 导航指南
-
-- **想分享什么？** → 前往 [Issues](https://github.com/Potato-Humburger/Our-Digital-Cabin/issues)
-- **想讨论？** → 前往 [讨论](https://github.com/Potato-Humburger/Our-Digital-Cabin/discussions)
-- **想回忆？** → 查看 [`memories/`](./memories/)
-- **一起计划？** → 检查 [`projects/`](./projects/)
-- **未来日期？** → 查看 [`dates/`](./dates/)
-
----
-
-## 💝 核心所在
-
-这个仓库代表：
-- ✨ 我们作为一对的独特性
-- 📖 我们的共同故事
-- 🌟 我们的梦想和回忆
-- 💕 我们彼此的承诺
-
-这里的每一个提交、每一条 Issue 和每一个文件都见证了我们在数字时代为彼此关系的培养所付出的时间。
-
----
-
-<div align="center">
-
-**由我们为我们，用 💖 制作**
-
-*最后更新：2026-08-22*
-
-</div>
+- [常见问题](docs/faq.md)
+- [贡献指南](docs/contribution-guide.md)
+- [提交信息规范](docs/commit-convention.md)

@@ -94,13 +94,7 @@ function setupSecretNote() {
 function setupDailyStatus(status) {
   const form = document.querySelector('#daily-status-form');
   if (!form) return;
-  const fields = {
-    mood: status.current_mood,
-    mood_description: status.mood_description,
-    location: status.location,
-    today_highlight: status.today_highlight,
-    quote_of_day: status.quote_of_day
-  };
+  const fields = { today_highlight: status.today_highlight };
   Object.entries(fields).forEach(([name, value]) => {
     const input = form.elements[name];
     if (input) input.value = value || '';
@@ -108,15 +102,7 @@ function setupDailyStatus(status) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const values = Object.fromEntries(new FormData(form).entries());
-    const payload = {
-      current_mood: values.mood,
-      mood_description: values.mood_description,
-      location: values.location,
-      location_description: values.location,
-      last_updated: `${getTodayInShanghai()} 00:00:00`,
-      today_highlight: values.today_highlight,
-      quote_of_day: values.quote_of_day
-    };
+    const payload = { last_updated: `${getTodayInShanghai()} 00:00:00`, today_highlight: values.today_highlight };
     const issueUrl = new URL('https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new');
     issueUrl.searchParams.set('title', `📝 [daily-status] ${getTodayInShanghai()}`);
     issueUrl.searchParams.set('body', `<!-- DAILY_STATUS_JSON\n${JSON.stringify(payload, null, 2)}\nDAILY_STATUS_JSON -->\n\n每日状态更新。`);
