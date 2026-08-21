@@ -25,6 +25,7 @@ body { background: #26362f; }.button-dark { color: #26362f; background: var(--co
 .status-form[hidden] { display: none; }
 .hero-actions .button-dark span { color: inherit; }
 .note-heading h2 { color: var(--paper) !important; }.note-composer input::placeholder, .note-composer textarea::placeholder { color: #aeb9a1 !important; opacity: 1; }
+.note-composer input, .note-composer textarea { color: var(--paper) !important; }
 .note-composer label { color: #1f3825; }.note-composer input::placeholder, .note-composer textarea::placeholder { color: #aeb9a1; opacity: 1; }.note-heading h2 { color: var(--paper); }
 .note-composer, .status-form { background: rgb(244 237 184 / 35%) !important; }
 .daily-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding-top: 28px; }.daily-highlights article { padding: 24px; background: rgb(244 237 184 / 35%); border: 1px solid #b8be8b66; }.daily-highlights .label { margin-bottom: 12px; }.daily-highlights article > p:last-child { margin: 0; color: var(--paper); font-size: 15px; line-height: 1.6; }
