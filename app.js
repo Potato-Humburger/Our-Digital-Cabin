@@ -93,6 +93,7 @@ function setupSecretNote() {
 
 function setupDailyStatus(status) {
   const form = document.querySelector('#daily-status-form');
+  const editor = document.querySelector('#status-editor');
   if (!form) return;
   const highlights = status.daily_highlights || { ajx: status.today_highlight || '', xzh: '' };
   const fields = { highlight_ajx: highlights.ajx, highlight_xzh: highlights.xzh };
@@ -100,6 +101,7 @@ function setupDailyStatus(status) {
     const input = form.elements[name];
     if (input) input.value = value || '';
   });
+  if (editor && sessionStorage.getItem('daily-status-submitted') === 'true') editor.hidden = true;
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const values = Object.fromEntries(new FormData(form).entries());
@@ -113,6 +115,10 @@ function setupDailyStatus(status) {
     issueUrl.searchParams.set('labels', '📝-想法');
     window.open(issueUrl.toString(), '_blank', 'noopener');
     document.querySelector('#status-sent').textContent = '已生成发布页面';
+    document.querySelector('#highlight-display-ajx').textContent = values.highlight_ajx || '暂无记录';
+    document.querySelector('#highlight-display-xzh').textContent = values.highlight_xzh || '暂无记录';
+    sessionStorage.setItem('daily-status-submitted', 'true');
+    if (editor) editor.hidden = true;
   });
   document.querySelector('#highlight-display-ajx').textContent = highlights.ajx || '暂无记录';
   document.querySelector('#highlight-display-xzh').textContent = highlights.xzh || '暂无记录';
