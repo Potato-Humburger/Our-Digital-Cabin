@@ -30,8 +30,8 @@
           <h1>欢迎回家<span>～</span></h1>
           <p class="hero-line">叽里呱啦劈劈啪啪，<br />一直一直一直在一起！</p>
           <div class="hero-actions">
-            <a class="button button-dark" href="#secret-note">发送一段悄悄话 <span>👉</span></a>
-            <a class="button button-dark" href="#story">那些重要的日子 <span>👉</span></a>
+            <a class="button button-dark" href="#secret-note">发送一段悄悄话 <span>→</span></a>
+            <a class="button button-dark" href="#story">那些重要的日子 <span>→</span></a>
           </div>
         </div>
         <div class="hero-art" aria-label="上海和香港之间的连接示意图">
@@ -50,6 +50,31 @@
           <p class="dialog-hint">提交后会打开 GitHub 确认页面，点击绿色按钮才会真正发布。</p>
           <button class="button button-dark dialog-submit" type="submit">打开发布页面 <span>↗</span></button>
           <output class="note-sent" id="note-sent" aria-live="polite"></output>
+        </form>
+      </section>
+
+      <section class="notes-section shell" id="note-history" aria-labelledby="note-history-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">04 / SECRET ARCHIVE</p><h2 id="note-history-title">悄悄话记录</h2></div>
+          <span class="count-badge" id="note-count">0 notes</span>
+        </div>
+        <div class="notes-list" id="secret-notes"><p class="notes-empty">还没有悄悄话记录。</p></div>
+      </section>
+
+      <section class="status-editor shell" id="status-editor" aria-labelledby="status-editor-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">05 / DAILY DESK</p><h2 id="status-editor-title">更新今日状态</h2></div>
+          <span class="count-badge">SYNC TO JSON</span>
+        </div>
+        <form id="daily-status-form" class="status-form">
+          <label>当前心情<input id="status-mood" name="mood" maxlength="30" required /></label>
+          <label>心情描述<input id="status-mood-description" name="mood_description" maxlength="120" required /></label>
+          <label>当前位置<input id="status-location" name="location" maxlength="80" required /></label>
+          <label>今日亮点<textarea id="status-highlight" name="today_highlight" maxlength="500" rows="3" required></textarea></label>
+          <label>今日想说的话<textarea id="status-quote" name="quote_of_day" maxlength="500" rows="3" required></textarea></label>
+          <p class="dialog-hint">提交后会打开 GitHub 确认页面，发布后自动写入状态 JSON。</p>
+          <button class="button button-dark" type="submit">保存今日状态 <span>→</span></button>
+          <output class="note-sent" id="status-sent" aria-live="polite"></output>
         </form>
       </section>
 
@@ -93,6 +118,6 @@
     </main>
 
     <footer class="site-footer shell"><span>明天快乐！明天见！</span><span>土豆公主 & 烤冷面</span><span id="updated">DATA SYNCED TODAY</span></footer>
-    <script src="app.js?v=movies3" defer></script>
+    <script src="app.js?v=notes1" defer></script>
   </body>
 </html>

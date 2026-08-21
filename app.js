@@ -48,6 +48,26 @@ function renderMovies(movies) {
     </article>`).join('');
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>'"]/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[character]));
+}
+
+function renderSecretNotes(notes) {
+  const list = document.querySelector('#secret-notes');
+  const count = document.querySelector('#note-count');
+  if (!list || !count) return;
+  count.textContent = `${notes.length} notes`;
+  if (!notes.length) return;
+  list.innerHTML = notes.map((note, index) => `
+    <article class="note-bubble ${index % 2 ? 'note-bubble-alt' : ''}">
+      <div class="note-meta"><strong>${escapeHtml(note.author)}</strong><time>${escapeHtml(note.time)}</time></div>
+      <p>${escapeHtml(note.message).replace(/\n/g, '<br />')}</p>
+      <a href="${escapeHtml(note.url)}" target="_blank" rel="noreferrer">在 GitHub 查看原文 ↗</a>
+    </article>`).join('');
+}
+
 function setupSecretNote() {
   const form = document.querySelector('#secret-note-form');
   const dateLabel = document.querySelector('#note-date');
@@ -71,17 +91,54 @@ function setupSecretNote() {
   });
 }
 
+function setupDailyStatus(status) {
+  const form = document.querySelector('#daily-status-form');
+  if (!form) return;
+  const fields = {
+    mood: status.current_mood,
+    mood_description: status.mood_description,
+    location: status.location,
+    today_highlight: status.today_highlight,
+    quote_of_day: status.quote_of_day
+  };
+  Object.entries(fields).forEach(([name, value]) => {
+    const input = form.elements[name];
+    if (input) input.value = value || '';
+  });
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const values = Object.fromEntries(new FormData(form).entries());
+    const payload = {
+      current_mood: values.mood,
+      mood_description: values.mood_description,
+      location: values.location,
+      location_description: values.location,
+      last_updated: `${getTodayInShanghai()} 00:00:00`,
+      today_highlight: values.today_highlight,
+      quote_of_day: values.quote_of_day
+    };
+    const issueUrl = new URL('https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new');
+    issueUrl.searchParams.set('title', `📝 [daily-status] ${getTodayInShanghai()}`);
+    issueUrl.searchParams.set('body', `<!-- DAILY_STATUS_JSON\n${JSON.stringify(payload, null, 2)}\nDAILY_STATUS_JSON -->\n\n每日状态更新。`);
+    issueUrl.searchParams.set('labels', '📝-想法');
+    window.open(issueUrl.toString(), '_blank', 'noopener');
+    document.querySelector('#status-sent').textContent = '已生成发布页面';
+  });
+}
+
 async function init() {
   try {
-    const [metrics, status, anniversaries, watchlist] = await Promise.all([
-      readJson('data/metrics.json'), readJson('data/status.json'), readJson('dates/anniversaries.json'), readJson('projects/watchlist/movies.json')
+    const [metrics, status, anniversaries, watchlist, secretNotes] = await Promise.all([
+      readJson('data/metrics.json'), readJson('data/status.json'), readJson('dates/anniversaries.json'), readJson('projects/watchlist/movies.json'), readJson('data/secret-notes.json')
     ]);
     document.querySelector('#days-together').textContent = getDaysTogether(metrics.relationship.start_date);
     document.querySelector('#mood').textContent = status.current_mood;
     document.querySelector('#mood-description').textContent = status.mood_description;
     renderTimeline(anniversaries.anniversaries, metrics);
     renderMovies(watchlist.movies);
+    renderSecretNotes(secretNotes.notes);
     setupSecretNote();
+    setupDailyStatus(status);
     document.querySelector('#updated').textContent = `DATA SYNCED ${getTodayInShanghai().replaceAll('-', '.')}`;
   } catch (error) {
     document.querySelector('#updated').textContent = 'DATA SYNC UNAVAILABLE';
