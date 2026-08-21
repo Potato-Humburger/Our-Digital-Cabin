@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=note-green2" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
@@ -30,19 +30,27 @@
           <h1>欢迎回家<span>～</span></h1>
           <p class="hero-line">叽里呱啦劈劈啪啪，<br />一直一直一直在一起！</p>
           <div class="hero-actions">
-            <a class="button button-dark" href="https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new" target="_blank" rel="noreferrer">写一封新情书 <span>→</span></a>
-            <a class="text-link" href="#story">看看我们走了多远 <span>↓</span></a>
+            <a class="button button-dark" href="#secret-note">发送一段悄悄话 <span>→</span></a>
+            <a class="button button-dark" href="#story">那些重要的日子 <span>↓</span></a>
           </div>
         </div>
         <div class="hero-art" aria-label="上海和香港之间的连接示意图">
-          <div class="sun"></div>
-          <div class="route route-one"></div>
-          <div class="route route-two"></div>
-          <div class="place place-shanghai"><i>●</i><span>上海<br /><small>AJX</small></span></div>
-          <div class="place place-hongkong"><i>●</i><span>香港<br /><small>XZH</small></span></div>
-          <div class="plane">✈</div>
-          <div class="art-note">LOVE<br /><strong>knows<br />no distance</strong></div>
+          <img class="hero-photo" src="images/our-photo.jpg" alt="土豆公主和烤冷面的合影" />
         </div>
+      </section>
+
+      <section class="note-composer shell" id="secret-note" aria-labelledby="note-title">
+        <div class="note-heading">
+          <p class="eyebrow"><span id="note-date"></span></p>
+          <h2 id="note-title">想偷偷告诉对方什么？</h2>
+        </div>
+        <form id="secret-note-form">
+          <label>状态+人物<input id="note-author" name="author" maxlength="20" placeholder="剪头帘的小僖猪" required /></label>
+          <label>悄悄话<textarea id="note-message" name="message" maxlength="1000" rows="5" placeholder="叽里咕噜" required></textarea></label>
+          <p class="dialog-hint">提交后会打开 GitHub 确认页面，点击绿色按钮才会真正发布。</p>
+          <button class="button button-dark dialog-submit" type="submit">打开发布页面 <span>↗</span></button>
+          <output class="note-sent" id="note-sent" aria-live="polite"></output>
+        </form>
       </section>
 
       <section class="stats shell" aria-label="今日统计">
@@ -85,6 +93,6 @@
     </main>
 
     <footer class="site-footer shell"><span>咪咪喵喵</span><span>土豆公主 & 烤冷面</span><span id="updated">DATA SYNCED TODAY</span></footer>
-    <script src="app.js" defer></script>
+    <script src="app.js?v=movies3" defer></script>
   </body>
 </html>

@@ -18,8 +18,8 @@ function getDaysTogether(startDate) {
 }
 
 function formatDate(date) {
-  const [year, month, day] = date.split('-');
-  return `${year}.${month}.${day}`;
+  const parts = date.split('-');
+  return parts.length === 2 ? `${parts[0]}.${parts[1]}` : `${parts[0]}.${parts[1]}.${parts[2]}`;
 }
 
 function renderTimeline(anniversaries, metrics) {
@@ -27,9 +27,9 @@ function renderTimeline(anniversaries, metrics) {
     date: item.date, event: item.event, description: item.description, emoji: item.event === 'homeless' ? '💐' : '💕'
   }));
   const birthdays = anniversaries.filter((item) => item.event.includes('生日')).map((item) => ({
-    date: `2026-${item.date}`, event: item.event, description: item.description, emoji: item.emoji
+    date: item.date, sortDate: `2026-${item.date}`, event: item.event, description: item.description, emoji: item.emoji
   }));
-  const items = [...milestones, ...birthdays].sort((a, b) => a.date.localeCompare(b.date));
+  const items = [...milestones, ...birthdays].sort((a, b) => (a.sortDate || a.date).localeCompare(b.sortDate || b.date));
   document.querySelector('#timeline').innerHTML = items.map((item, index) => `
     <article class="timeline-item ${index === items.length - 1 ? 'current' : ''}">
       <div class="timeline-date">${formatDate(item.date)}</div>
@@ -48,6 +48,29 @@ function renderMovies(movies) {
     </article>`).join('');
 }
 
+function setupSecretNote() {
+  const form = document.querySelector('#secret-note-form');
+  const dateLabel = document.querySelector('#note-date');
+  const sentMessage = document.querySelector('#note-sent');
+  if (!dateLabel || !form) return;
+
+  dateLabel.textContent = getTodayInShanghai().replaceAll('-', '.');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const author = new FormData(form).get('author').trim();
+    const message = new FormData(form).get('message').trim();
+    const date = getTodayInShanghai();
+    const title = `[${date}] message from ${author}`;
+    const body = `## 🤫 悄悄话\n\n**来自：** ${author}\n**时间：** ${date}（北京时间）\n\n${message}\n\n---\n由数字小屋发送。`;
+    const issueUrl = new URL('https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new');
+    issueUrl.searchParams.set('title', title);
+    issueUrl.searchParams.set('body', body);
+    issueUrl.searchParams.set('labels', '💚-心对心');
+    window.open(issueUrl.toString(), '_blank', 'noopener');
+    if (sentMessage) sentMessage.textContent = '已发送';
+  });
+}
+
 async function init() {
   try {
     const [metrics, status, anniversaries, watchlist] = await Promise.all([
@@ -58,6 +81,7 @@ async function init() {
     document.querySelector('#mood-description').textContent = status.mood_description;
     renderTimeline(anniversaries.anniversaries, metrics);
     renderMovies(watchlist.movies);
+    setupSecretNote();
     document.querySelector('#updated').textContent = `DATA SYNCED ${getTodayInShanghai().replaceAll('-', '.')}`;
   } catch (error) {
     document.querySelector('#updated').textContent = 'DATA SYNC UNAVAILABLE';

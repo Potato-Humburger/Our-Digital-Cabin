@@ -29,9 +29,18 @@
     {
       "id": 3,
       "date": "07-29",
-      "event": "dxz（xzh）生日",
+      "event": "徐子涵生日",
       "emoji": "🎂",
       "description": "烤冷面的生日。",
+      "reminder_days_before": 7,
+      "celebration_ideas": []
+    },
+    {
+      "id": 4,
+      "date": "01-18",
+      "event": "安家僖生日",
+      "emoji": "🎂",
+      "description": "土豆公主的生日。",
       "reminder_days_before": 7,
       "celebration_ideas": []
     }
