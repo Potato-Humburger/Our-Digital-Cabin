@@ -10,7 +10,7 @@
 - 旅行清单与本地旅行图片
 - 观影清单
 - 悄悄话提交和记录展示
-- 网页端“今日亮点”编辑
+- 网页端 AJX/XZH 今日亮点编辑
 - GitHub Actions 自动同步 JSON 数据
 
 ## 快速开始
@@ -57,6 +57,18 @@ http://127.0.0.1:4173/index.html
 3. 运行 `.github/workflows/pages.yml`，或向 `main` 分支推送一次提交。
 4. 部署完成后，通过仓库的 Pages 地址访问网页。
 
+### 编辑权限
+
+公开仓库中的网页任何人都可以访问，但只有仓主、仓库成员或被授予写权限的协作者提交的状态 Issue 和悄悄话 Issue 才会被自动同步。
+
+要允许另一位使用者编辑：
+
+1. 打开仓库 `Settings > Collaborators`。
+2. 邀请对方加入仓库并授予写权限。
+3. 对方接受邀请后，即可使用网页编辑台提交内容。
+
+未被授权的用户仍可能看到公开网页或创建 Issue，但其内容不会写入 JSON 文件。
+
 ## 网页使用
 
 ### 发送悄悄话
@@ -69,19 +81,19 @@ http://127.0.0.1:4173/index.html
 
 ### 更新今日亮点
 
-1. 在网页的“更新今日状态”区域填写今日亮点。
+1. 在网页的“更新今日状态”区域分别填写 AJX 和 XZH 的今日亮点。
 2. 点击“保存今日状态”。
 3. 在 GitHub Issue 页面确认并发布。
 4. `sync-daily-status.yml` 会将内容写入 `data/status.json`。
 
-网页编辑台只更新今日亮点；`status.json` 中的其他字段需要直接编辑文件维护。
+网页编辑台只更新 `daily_highlights`；`status.json` 中的其他字段需要直接编辑文件维护。
 
 ## 数据文件
 
 | 文件 | 用途 |
 |---|---|
 | `data/metrics.json` | 关系开始日期、相伴天数和里程碑 |
-| `data/status.json` | 当前状态、位置和今日亮点 |
+| `data/status.json` | 当前状态、位置和 AJX/XZH 今日亮点 |
 | `data/config.json` | 项目开关和隐私配置 |
 | `data/secret-notes.json` | 已同步的悄悄话记录 |
 | `dates/anniversaries.json` | 生日和纪念日数据 |

@@ -94,7 +94,8 @@ function setupSecretNote() {
 function setupDailyStatus(status) {
   const form = document.querySelector('#daily-status-form');
   if (!form) return;
-  const fields = { today_highlight: status.today_highlight };
+  const highlights = status.daily_highlights || { ajx: status.today_highlight || '', xzh: '' };
+  const fields = { highlight_ajx: highlights.ajx, highlight_xzh: highlights.xzh };
   Object.entries(fields).forEach(([name, value]) => {
     const input = form.elements[name];
     if (input) input.value = value || '';
@@ -102,7 +103,10 @@ function setupDailyStatus(status) {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const values = Object.fromEntries(new FormData(form).entries());
-    const payload = { last_updated: `${getTodayInShanghai()} 00:00:00`, today_highlight: values.today_highlight };
+    const payload = {
+      last_updated: `${getTodayInShanghai()} 00:00:00`,
+      daily_highlights: { ajx: values.highlight_ajx, xzh: values.highlight_xzh }
+    };
     const issueUrl = new URL('https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new');
     issueUrl.searchParams.set('title', `📝 [daily-status] ${getTodayInShanghai()}`);
     issueUrl.searchParams.set('body', `<!-- DAILY_STATUS_JSON\n${JSON.stringify(payload, null, 2)}\nDAILY_STATUS_JSON -->\n\n每日状态更新。`);
@@ -110,6 +114,8 @@ function setupDailyStatus(status) {
     window.open(issueUrl.toString(), '_blank', 'noopener');
     document.querySelector('#status-sent').textContent = '已生成发布页面';
   });
+  document.querySelector('#highlight-display-ajx').textContent = highlights.ajx || '暂无记录';
+  document.querySelector('#highlight-display-xzh').textContent = highlights.xzh || '暂无记录';
 }
 
 async function init() {

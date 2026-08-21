@@ -67,11 +67,17 @@
           <span class="count-badge">SYNC TO JSON</span>
         </div>
         <form id="daily-status-form" class="status-form">
-          <label>今日亮点<textarea id="status-highlight" name="today_highlight" maxlength="500" rows="5" required></textarea></label>
+          <label>AJX 今日亮点<textarea id="status-highlight-ajx" name="highlight_ajx" maxlength="500" rows="5"></textarea></label>
+          <label>XZH 今日亮点<textarea id="status-highlight-xzh" name="highlight_xzh" maxlength="500" rows="5"></textarea></label>
           <p class="dialog-hint">提交后会打开 GitHub 确认页面，发布后自动写入状态 JSON。</p>
           <button class="button button-dark dialog-submit" type="submit">保存今日状态 <span>↗</span></button>
           <output class="note-sent" id="status-sent" aria-live="polite"></output>
         </form>
+      </section>
+
+      <section class="daily-highlights shell" aria-label="今日亮点">
+        <article><p class="label">AJX / TODAY</p><p id="highlight-display-ajx">暂无记录</p></article>
+        <article><p class="label">XZH / TODAY</p><p id="highlight-display-xzh">暂无记录</p></article>
       </section>
 
       <section class="stats shell" aria-label="今日统计">
