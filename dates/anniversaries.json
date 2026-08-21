@@ -2,16 +2,16 @@
   "anniversaries": [
     {
       "id": 1,
-      "date": "05-14",
-      "event": "我们相遇的日子",
-      "year_started": 2024,
-      "emoji": "🌹",
+      "date": "07-18",
+      "event": "homeless",
+      "year_started": 2025,
+      "emoji": "💐",
       "description": "这是一切开始的日子。",
       "reminder_days_before": 7,
       "celebration_ideas": [
-        "看看我们第一次见面的地方",
-        "重现第一次约会",
-        "庆祝晚餐"
+        "从达州飞回上海，小作文",
+        "《一生中最勇敢的瞬间》",
+        "桃屋"
       ]
     },
     {
@@ -22,37 +22,8 @@
       "description": "爱的节日。",
       "reminder_days_before": 14,
       "celebration_ideas": [
-        "特殊礼物",
-        "浪漫晚宴",
-        "写情书"
-      ]
-    },
-    {
-      "id": 3,
-      "date": "03-14",
-      "event": "我们的三个月纪念日",
-      "year_started": 2024,
-      "emoji": "💝",
-      "description": "在一起三个月的庆祝。",
-      "reminder_days_before": 3,
-      "celebration_ideas": [
-        "回顾过去三个月",
-        "计划下一个三个月",
-        "特殊约会"
-      ]
-    },
-    {
-      "id": 4,
-      "date": "06-14",
-      "event": "我们的六个月纪念日",
-      "year_started": 2024,
-      "emoji": "🎉",
-      "description": "六个月的爱和成长。",
-      "reminder_days_before": 7,
-      "celebration_ideas": [
-        "旅行",
-        "照相",
-        "写下我们的故事"
+        "礼物",
+        "晚餐"
       ]
     }
   ]
