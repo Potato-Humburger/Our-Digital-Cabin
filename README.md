@@ -5,7 +5,7 @@
 > 两颗心在数字世界中相遇的共享空间
 
 [![最后更新](https://img.shields.io/badge/最后更新-2026--08--22-ff69b4?style=flat-square)](https://github.com/Potato-Humburger/Our-Digital-Cabin)
-[![相伴时光](https://img.shields.io/badge/相伴-自%20%5B你的日期%5D-ff1493?style=flat-square)](.)
+[![相伴时光](https://img.shields.io/badge/相伴-自%202025--07--18-ff1493?style=flat-square)](.)
 [![状态](https://img.shields.io/badge/状态-💚%20幸福%20%26%20健康-32cd32?style=flat-square)](.)
 [![爱心指数](https://img.shields.io/badge/爱心-∞-ff69b4?style=flat-square)](.)
 

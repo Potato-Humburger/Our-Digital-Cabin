@@ -1,7 +1,7 @@
 {
   "relationship": {
     "start_date": "2025-07-18",
-    "days_together": 0,
+    "days_together": 400,
     "current_phase": "狡猾宽粉和邪恶龙虾",
     "milestones": [
       {
@@ -10,7 +10,7 @@
         "description": "第一次交集，xzh从虞山刚回来"
       },
       {
-        "date": "YYYY-MM-DD",
+        "date": "2025-07-18",
         "event": "成为情侣",
         "description": "💕 正式在一起"
       }
@@ -23,9 +23,8 @@
   },
   "future": {
     "dreams": [
-      "旅游清单中的目的地",
-      "一起做的事",
-      "未来计划"
+      "一起去伊犁旅行",
+      "一起去大理旅行"
     ]
   }
 }

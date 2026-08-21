@@ -1,10 +1,10 @@
 {
-  "current_mood": "😊",
-  "mood_description": "当前心情",
-  "location": "🏠",
-  "location_description": "当前位置",
-  "last_updated": "YYYY-MM-DD HH:MM:SS",
+  "current_mood": "幸福",
+  "mood_description": "今天是我们在一起的第四百天！",
+  "location": "ajx在上海，xzh在香港",
+  "location_description": "我们暂时分别在上海和香港",
+  "last_updated": "2026-08-22 01:11:56",
   "thinking_of_you": true,
-  "today_highlight": "👉 编辑这里分享今天的亮点！",
-  "quote_of_day": "💭 用一句特殊的引言/内心话来开始你的一天..."
+  "today_highlight": "土豆公主剪残了头帘，但是烤冷面很喜欢",
+  "quote_of_day": "liebe dich！"
 }
