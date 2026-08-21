@@ -11,6 +11,13 @@ function getTodayInShanghai() {
   }).format(new Date());
 }
 
+function getBeijingDateTime() {
+  return new Intl.DateTimeFormat('zh-CN', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', hour12: false
+  }).format(new Date()).replace(/\//g, '-').replace(',', '');
+}
+
 function getDaysTogether(startDate) {
   const start = Date.parse(`${startDate}T00:00:00Z`);
   const today = Date.parse(`${getTodayInShanghai()}T00:00:00Z`);
@@ -80,8 +87,9 @@ function setupSecretNote() {
     const author = new FormData(form).get('author').trim();
     const message = new FormData(form).get('message').trim();
     const date = getTodayInShanghai();
+    const dateTime = getBeijingDateTime();
     const title = `[${date}] message from ${author}`;
-    const body = `## 🤫 悄悄话\n\n**来自：** ${author}\n**时间：** ${date}（北京时间）\n\n${message}\n\n---\n由数字小屋发送。`;
+    const body = `## 🤫 悄悄话\n\n**来自：** ${author}\n**时间：** ${dateTime}（北京时间）\n\n${message}\n\n---\n由数字小屋发送。`;
     const issueUrl = new URL('https://github.com/Potato-Humburger/Our-Digital-Cabin/issues/new');
     issueUrl.searchParams.set('title', title);
     issueUrl.searchParams.set('body', body);
